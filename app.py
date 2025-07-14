@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import requests
+inport os
 
 app = Flask(__name__)
 
@@ -27,4 +28,5 @@ def index():
     return render_template("asteroid.html", results=results, query=query)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5050)
+    port = int(os.environ.get("PORT", 10000))
+    app.run(debug=False, host="0.0.0.0", port=port)
